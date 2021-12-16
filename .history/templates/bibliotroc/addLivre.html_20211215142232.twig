@@ -1,0 +1,36 @@
+{% extends "base.html.twig" %}
+{% form_theme formLivre 'bootstrap_5_layout.html.twig' %}
+{% block body %}
+   {% include'biblio/header.twig' %}
+
+<div class="container-fluid" style="width:90%; ">
+<div class="row">
+<div class="col-sm-3">
+  <h3>Catalogues</h3>
+  <div class="list-group" style="">
+  {% for categorie in categories %}
+    <a href="{{ path('page_livre', {'id':categorie.id})}}" class="list-group-item">{{categorie.nomCategorie}}</a>
+  {% endfor %}
+  </div>
+  </div>
+<div class="col-sm-9">
+  <div  class="form_div" style="width:90%; margin-left:5%; ">
+     {{ form_start(formLivre) }}
+          {{form_row(formLivre.nomLivre, {'label': "Nom Livre", 'attr': {'placeholder': "nom Livre ..."}}) }}
+          {{form_row(formLivre.auteur, {'label': "Auteur", 'attr': {'placeholder': "auteur ..."}})}}
+          {{form_row(formLivre.editeur, {'label': "Editeur", 'attr': {'placeholder': "editeur ..."}})}}
+          {{form_row(formLivre.codeBare, {'label': "Code Barre", 'attr': {'placeholder': "code barre ..."}})}}
+          {{form_row(formLivre.parution, {'label': "Parution"})}}
+          {{form_row(formLivre.categorie, {'label': "Categorie"})}}
+          {{form_row(formLivre.langue, {'label': "Langue"})}}
+          {{form_row(formLivre.format, {'label': "Format"})}}
+          {{form_row(formLivre.resumer, {'label': "Resume"})}}
+           {{form_row(formLivre.nbrPage, {'label': "Nombre Pages"})}}
+           {{form_row(formLivre.nbrPoint, {'label': "Nombre Point"})}}
+          <button type="submit" name="" id="" class="btn btn-primary">Enregistrer</button>
+     {{ form_end(formLivre) }}
+  </div>
+</div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+   {% include'bibliotroc/header.twig' %}
+
+   <div class="container-fluid" style="width:90%; ">
+<div class="row">
+<div class="col-sm-3">
+  <h3>Catalogues</h3>
+  <div class="list-group" style="">
+  {% for categorie in categories %}
+    <a href="{{ path('page_livre', {'id':categorie.id}) }}" class="list-group-item">{{categorie.nomCategorie}}</a>
+  {% endfor %}
+  </div>
+  </div>
+<div class="col-sm-9">
+ <div class="bg-info clearfix" style="height:50px; margin-top:16px; margin-bottom:20px;">
+ <h2 style="text-align:center;">Mes livres  </h2>
+</div>
+ {% for stocke in stockers %}
+     <div class="col-md-3" style="float:left; height:270px; marigin-left:10px;">
+        <div class="card mb-3" >
+               <img src="{{asset('images/livres/'~stocke.livre.codeBare~'.jpg')}}" class="img-fluid rounded-start" alt="..." style="height:250px;">
+               <a href="{{ path('suprimer_stock_livre', {'id':stocke.id}) }}"><button type="button" class="btn btn-danger btn-sm " style="width:100%;">Retirer de mon stocke</button></a>
+        </div>
+    </div>
+ {% endfor %}
+</div>
+</div>
+</div>
+{% endblock %}

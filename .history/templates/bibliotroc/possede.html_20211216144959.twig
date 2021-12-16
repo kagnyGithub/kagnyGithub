@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+{% block body %}
+  {% include'bibliotroc/header.twig' %}
+
+<div class="container-fluid" style="width:90%; ">
+  <h3 style="margin-top:40px; text-align:center;margin-button:20px; "> Rubriques {{nomcategorie}} </h3>
+    <div class="row">
+       <div class="col-sm-3"  style="background:#BCF7F7;">
+         <h3>Catalogues</h3>
+         <div class="list-group">
+           {% for categorie in categorie %}
+                <a href="{{ path('page_livre', {'id':categorie.id})}}" class="list-group-item">{{categorie.nomCategorie}}</a>
+           {% endfor %}
+         </div>
+       </div>
+       <div class="col-sm-9">
+         <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Prenom</th>
+      <th scope="col">Email</th>
+      <th scope="col">Ville</th>
+      <th scope="col">Adresse</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Mark</td>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>Mark</td>
+      <td>@mdo</td>
+    </tr>
+  </tbody>
+</table>
+
+
+       </div>
+    </div>
+</div>

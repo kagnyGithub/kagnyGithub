@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+{% block body %}
+{% include'bibliotroc/header.twig' %}
+<div class="container-fluid" style="width:90%;">
+
+<div  class="row">
+    <div class="col-3" style="background:#BCF7F7;">      
+          <h3>Catalogues</h3>
+        <div class="list-group" >
+            {% for categorie in categories %}
+                <a href="{{ path('page_livre', {'id':categorie.id})}}" class="list-group-item">{{categorie.nomCategorie}}</a>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-9" style="margin-top:25px;">
+            <form>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+             <div class="mb-3">
+                <label for="floatingTextarea">Méssage </label>
+               <div class="form-floating">
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                 
+                </div>
+             </div>
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+            </form>
+
+    </div>
+ </div>
+</div>
+{% endblock %}
+    

@@ -1,0 +1,76 @@
+{% extends "base.html.twig" %}
+{% form_theme formRegistre 'bootstrap_5_layout.html.twig' %}
+{% block body %}
+ {% include'biblio/header.twig' %}
+  
+<div class="container-fluid" style="width:90%; ">
+<div class="row">
+<div class="col-sm-3" style="background:#BCF7F7;">
+  <h3>Catalogues</h3>
+  <div class="list-group" style="">
+    {% for categorie in categories %}
+       <a href="{{ path('page_livre', {'id':categorie.id})}}" class="list-group-item">{{categorie.nomCategorie}}</a>
+    {% endfor %}
+  </div>
+  </div>
+<div class="col-sm-9">
+    <div class="row">
+        <div class="col-3">
+             <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card-header" style="text-align:center;">Mon stocke</div>
+                <div class="card-body">
+                <a href="{{path('show_stock')}}"><img src="{{asset('images/stock1.jpg')}}"  style="width:200px; height:150px;"></a>
+                 </div>
+             </div>
+        </div>
+        <div class="col-3">
+             <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card-header" style="text-align:center;">Mes Commandes</div>
+                <div class="card-body">
+               <img src="{{asset('images/commande.png')}}" style="width:200px; height:150px;">
+                 </div>
+             </div>
+        </div>
+        <div class="col-3">
+             <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card-header" style="text-align:center;">Mes Favoris</div>
+                <div class="card-body">
+                <img src="{{asset('images/fav.png')}}" style="width:200px; height:150px;">
+                 </div>
+             </div>
+        </div>
+        <div class="col-3">
+             <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card-header" style="text-align:center;">Mes envois</div>
+                <div class="card-body">
+                <img src="{{asset('images/envoi.png')}}" style="width:200px; height:150px;">
+                 </div>
+             </div>
+        </div>
+         
+         <div class="bg-info clearfix" style="height:50px; margin-top:16px; margin-bottom:20px;">
+          <h2 style="text-align:center;">Mes Coordonnees personnelles </h2>
+         </div>
+
+         <div class="container-fluid" style="background:#27DADA ;">
+           <div  class="form_div" style="width:90%; margin-left:5%; ">
+                 <h1 style="text-align:center;">Inscription !!! </h1>
+                {{ form_start(formRegistre) }}
+                   {{form_row(formRegistre.nom, {'label': "Nom ", 'attr': {'placeholder': "votre nom"}})}}
+                   {{form_row(formRegistre.prenom, {'label': "Prenom", 'attr': {'placeholder': "votre prenom "}})}}
+                    {{form_row(formRegistre.email, {'label': "Email", 'attr': {'placeholder': "votre email", 'name': "_username" }})}}
+                   {{form_row(formRegistre.password, {'label': "Mot de passe", 'attr': {'name': "_password"}})}}
+                   {{form_row(formRegistre.civilite, {'label': "Civilite"})}}
+                   {{form_row(formRegistre.adresse, {'label': "Adresse", 'attr': {'placeholder': "votre adresse"}})}}
+                   {{form_row(formRegistre.codePostale, {'label': "Code postale", 'attr': {'placeholder': "votre code postale"}})}}
+                   {{form_row(formRegistre.ville, {'label': "Ville", 'attr': {'placeholder': "votre ville"}})}}
+                   {{form_row(formRegistre.pays, {'label': "Pays"})}}
+                    <button type="submit" name="" id="" class="btn btn-primary" style="width:250px; margin-bottom:100px;">Enregistrer</button>
+                {{ form_end(formRegistre) }}
+
+  </div>
+</div>
+    </div>
+</div>
+   
+{% endblock %}

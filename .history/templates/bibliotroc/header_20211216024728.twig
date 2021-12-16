@@ -1,0 +1,91 @@
+<div class="container-fluid" style="width:90%; ">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid" id="entete">
+    <a class="navbar-brand" href="#">Bibliotroc</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Sciences
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Mathematiques</a></li>
+             <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Sciences de la vie et de la terre</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Sciences Physiques</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Litteratures
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Romans</a></li>
+             <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Poesies</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Theatres</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Langues
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Anglais</a></li>
+             <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Espagnol</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Portugais</a></li>
+          </ul>
+        </li>
+        
+      </ul>
+      <div class="d-flex">
+        
+   
+   {% if app.user %}
+    <a name="" id="" class="btn btn-primary" href="{{path('espace_membre') }}" role="button">Ajouter un livre</a>
+   <a name="" id="" class="btn btn-primary" href="{{path('espace_membre') }}" role="button">Mon Compte</a>
+   <a name="" id="" class="btn btn-primary" href="{{path('security_logout') }}" role="button">Deconnecter</a>
+     
+  {% else %}
+
+       <!-- Button trigger modal -->
+ <a href="{{path('security_login') }}" >
+ <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Connecter
+</button>
+ </a>
+ {% endif %}
+       
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="header_barre">
+    <div class="col-md-8 col-sm-5 hidden-xs">
+      <div class="recherche">
+        <form action="rechercher.php" method="post">
+          <div class="input-group" id="adv-search">
+            <input type="text" name="recherche" class="form-control" placeholder="Rechercher un livre, un auteur, un code-barres..." required="required" style="border-radius: 5px 0 0 5px; margin-left:50%; ">
+              <div class="input-group-btn">
+                  <div class="btn-group" role="group">
+                      <button type="submit" class="btn btn-primary">Rechercher</button>
+                  </div>
+              </div>
+            </div>
+        </form>
+      </div>
+    </div>
+    </div>
+  </div>

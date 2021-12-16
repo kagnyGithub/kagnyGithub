@@ -1,0 +1,90 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+{% include'bibliotroc/header.twig' %}
+<div class="container-fluid" style="width:90%;">
+
+<div  class="row">
+    <div class="col-3" >
+          
+  <h3>Idées de lectures</h3>
+  <div class="list-group" >
+    {% for i in range(0, 10, 1) %}
+    <a href="" class="list-group-item">Mathematiques</a>
+  {% endfor %}
+  </div>
+</aside> 
+
+    </div>
+    <div class="col-9" style="margin-top:25px;">
+        <div class="card mb-3" style="height:380px;">
+       <div class="row g-0">
+    <div class="col-md-3">
+      <img src="{{asset('images/livres/'~1~'.jpg')}}" class="img-fluid rounded-start" alt="..." style="height:380px; width:300px;">
+    </div>
+    <div class="col-md-9">
+      <div class="card-body">
+        <h5 class="card-title">Nom :</h5>
+           Nom Livre</br>
+          disponible</br>
+          diteur: Nom  editeur</br>
+          Parution: 10/03/2018 </br>
+          Langue: Francaise</br>
+          Format: Poche</br>
+          Nombre de page: 192 </br>
+       <small class="text-muted">Last updated 3 mins ago</small></br>
+      </div>
+        <div class="d-grid gap-2 col-6 mx-auto" style=" float:right;">
+          <a href="#"><button type="button" class="btn btn-primary btn-sm " style="width:250px;">Je le veux</button></a>
+          <a href=""><button type="button" class="btn btn-secondary btn-sm " style="width:250px;">je le possede</button></a>
+        </div>
+       </div>
+      </div>
+   </div>
+    <div class="card border-primary mb-3" style="max-width:100%;">
+     <div class="card-header">Resumer</div>
+      <div class="card-body text-primary">
+        <p class="card-text">
+                 En informatique, un fichier texte ou fichier texte brut ou fichier texte simple[réf. 
+                 nécessaire] est un fichier dont le contenu représente uniquement une suite de caractères ;
+                  il utilise nécessairement une forme particulière de codage des caractères qui peut être une
+                   variante ou une extension du standard local des États-Unis, l'ASCII. Il n'existe aucune 
+                   définition officielle, et les différentes interprétations de ce qu'est un fichier texte
+                    partagent des propriétés essentielles. Les caractères considérés sont généralement les 
+                    caractères imprimables, d'espaces et de retours à la ligne. Certains codages de caractères 
+                    normalisés incluent également certains caractères de contrôleN 1, séquence d'échappementN 2 
+                    ou marqueursN 3 qui peuvent faire l'objet de différences d'appréciations. La notion de fichier
+                     texte est donc subjective et dépend notamment des systèmes de codage de caractère considérés
+                      (windows-1252 et ISO-8859-1 n'offrant pas les mêmes plages de valeurs «imprimables».)
+        </p>
+      </div>
+    </div>
+   <h4> Voir aussi... </h4>
+   {% for livre in livres %}
+    <div class="col-md-6" style="float:left; height:250px;">
+        <div class="card mb-3" style="max-width: 540px;height:210px;">
+           <div class="row g-0">
+               <div class="col-md-4">
+               <img src="{{asset('images/livres/'~livre.codeBare~'.jpg')}}" class="img-fluid rounded-start" alt="..." style="height:200px;">-
+              </div>
+              <div class="col-md-8">
+                 <div class="card-body">
+                    <h5 class="card-title">{{livre.nomLivre }}</h5>
+                     {{ livre.auteur}}</br>
+                    {{ livre.categorie.nomCategorie}}</br>
+                    <span style="color:black; font-size:20px;">{{ livre.nbrePoint }} Points</span></br>
+                  </div>
+                  <div class="bouton" style="position:fixe;">
+                      <a href="{{ path('show_livre', {'id':livre.id}) }}"><button type="button" class="btn btn-primary btn-sm " style="width:150px;">Je le veux</button></a>
+                      <a href="{{ path('show_livre', {'id':livre.id}) }}"><button type="button" class="btn btn-secondary btn-sm " style="width:150px;">je le possede</button></a>
+                  </div>
+              </div>
+           </div>
+        </div>
+    </div>
+{% endfor %}
+
+  </div>
+</div>
+</div>
+{% endblock %}

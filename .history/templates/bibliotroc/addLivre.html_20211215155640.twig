@@ -1,0 +1,77 @@
+{% extends "base.html.twig" %}
+{% form_theme formLivre 'bootstrap_5_layout.html.twig' %}
+{% block body %}
+   {% include'bibliotroc/header.twig' %}
+
+<div class="container-fluid" style="width:90%; ">
+<div class="row">
+<div class="col-sm-3">
+  <h3>Catalogues</h3>
+  <div class="list-group" style="">
+  {% for categorie in categories %}
+    <a href="{{ path('page_livre', {'id':categorie.id})}}" class="list-group-item">{{categorie.nomCategorie}}</a>
+  {% endfor %}
+  </div>
+  </div>
+<div class="col-sm-9">
+  <div  class="form_div" style="width:90%; margin-left:5%; ">
+     {{ form_start(formLivre) }}
+     <div class="row"> 
+        <div class="col-6">
+          {{form_row(formLivre.nomLivre, {'label': "Nom Livre", 'attr': {'placeholder': "nom Livre ..."}}) }}
+          </div>
+            <div class="col-6">
+          {{form_row(formLivre.auteur, {'label': "Auteur", 'attr': {'placeholder': "auteur ..."}})}}
+              </div>
+        </div>
+        <div class="row"> 
+            <div class="col-6">
+          {{form_row(formLivre.editeur, {'label': "Editeur", 'attr': {'placeholder': "editeur ..."}})}}
+           </div>
+            <div class="col-6">
+          {{form_row(formLivre.codeBare, {'label': "Code Barre", 'attr': {'placeholder': "code barre ..."}})}}
+           </div>
+        </div>
+        <div class="row"> 
+            <div class="col-6">
+          {{form_row(formLivre.parution, {'label': "Parution"})}}
+          </div>
+            <div class="col-6">
+          {{form_row(formLivre.categorie, {'label': "Categorie"})}}
+           </div>
+        </div>
+        <div class="row"> 
+            <div class="col-6">
+          {{form_row(formLivre.format, {'label': "Format"})}}
+          </div>
+            <div class="col-6">
+          {{form_row(formLivre.resumer, {'label': "Resume"})}}
+          </div>
+        </div>
+        <div class="row"> 
+            <div class="col-6">
+           {{form_row(formLivre.nbrePage, {'label': "Nombre Pages"})}}
+           </div>
+            <div class="col-6">
+           {{form_row(formLivre.nbrePoint, {'label': "Nombre Point"})}}
+           </div>
+        </div>
+        <div class="row"> 
+            <div class="col-6">
+          {{form_row(formLivre.disponible, {'label': "Disponibilité"})}}
+          </div>
+            <div class="col-6">
+         
+          </div>
+        </div>
+        <div class="row"> 
+            <div class="col-12">
+          <button type="submit" name="" id="" class="btn btn-primary">Enregistrer</button>
+          </div>
+        </div>
+     {{ form_end(formLivre) }}
+  </div>
+</div>
+</div>
+</div>
+{% endblock %}

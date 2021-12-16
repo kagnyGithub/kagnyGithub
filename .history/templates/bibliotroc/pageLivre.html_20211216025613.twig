@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+{% block body %}
+  {% include'bibliotroc/header.twig' %}
+
+  <div class="container-fluid" style="width:90%; ">
+  <h3 style="margin-top:40px; text-align:center;margin-button:20px; "> Rubrique mathematiques </h3>
+<div class="row">
+<div class="col-sm-3"  style="background:#BCF7F7;">
+  <h3>Catalogues</h3>
+  <div class="list-group">
+    {% for categorie in categories %}
+       <a href="{{ path('page_livre', {'id':categorie.id})}}" class="list-group-item">{{categorie.nomCategorie}}</a>
+    {% endfor %}
+  </div>
+  </div>
+<div class="col-sm-9">
+
+<!---- rubrique livre -->
+
+{% for livre in livres %}
+    <div class="col-md-6" style="float:left; height:250px;">
+        <div class="card mb-3" style="max-width: 540px;height:210px;">
+           <div class="row g-0">
+               <div class="col-md-4">
+               <img src="{{asset('images/livres/'~livre.codeBare~'.jpg')}}" class="img-fluid rounded-start" alt="..." style="height:200px;">-
+              </div>
+              <div class="col-md-8">
+                 <div class="card-body">
+                    <h5 class="card-title">{{livre.nomLivre }}</h5>
+                     {{ livre.auteur}}</br>
+                    {{ livre.categorie.nomCategorie}}</br>
+                    <span style="color:black; font-size:20px;">{{ livre.nbrePoint }} Points</span></br>
+                  </div>
+                  <div class="bouton" style="position:fixe;">
+                      <a href="{{ path('show_livre', {'id':livre.id}) }}"><button type="button" class="btn btn-primary btn-sm " style="width:150px;">Je le veux</button></a>
+                      <a href="{{ path('show_livre', {'id':livre.id}) }}"><button type="button" class="btn btn-secondary btn-sm " style="width:150px;">je le possede</button></a>
+                  </div>
+              </div>
+              
+           </div>
+        </div>
+    </div>
+{% endfor %}
+
+</div>
+</div>  
+
+{% endblock %}

@@ -1,0 +1,105 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Home page{% endblock %}
+
+{% block body %}
+ {% include'bibliotroc/header.twig' %}
+
+
+<div class="container-fluid" style="width:90%; "> 
+<div class="row">
+<div class="col-sm-3" style="background:#BCF7F7;">
+  <h3>Catalogues</h3>
+  <div class="list-group" >
+  {% for i in range(0, 10,1) %}
+    <a href="" class="list-group-item">Mathematiques</a>
+  {% endfor %}
+  </div>
+  </div>
+<div class="col-sm-9">
+       <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="margin-top:25px;">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{{asset('images/slide4.png')}}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{{asset('images/slide3.png')}}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{{asset('images/slide2.png')}}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{{asset('images/slide1.png')}}" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<h2> Echangez vos livres contre des nouveaux avec Bibliotroc ! </h2>
+<p>Facile et économique, le troc de livres d'occasion vous permet de lire de nouveaux titres toute l'année.
+ Inscrivez-vous gratuitement et ajoutez vos livres à notre catalogue composé de milliers d'ouvrages.
+ </p>
+ <h3>Le bon plan pour lire moins cher toute l'année !</h3>
+ <div class="row" style="margin-top:22px;">
+   <div class="col-6">
+      <h4 style="text-align:center; color:red;"> le le tronc de livre de d'emploi </h4>
+          Vous êtes nouveau et souhaitez échanger vos livres sur Internet ? Découvrez comment
+            fonctionne le troc de livres sur Bibliotroc.
+
+    </div>
+   
+ </div>
+ <div class="bg-info clearfix" style="height:50px; margin-top:16px; margin-bottom:20px;">
+ <h2 style="text-align:center;">Une sélection de livres disponibles à l'échange </h2>
+</div>
+<!---- rubrique livre -->
+
+{% for i in range(0, 10, 1) %}
+    <div class="col-md-6" style="float:left; height:250px;">
+        <div class="card mb-3" style="max-width: 540px;height:210px;">
+           <div class="row g-0">
+               <div class="col-md-4">
+               <img src="{{asset('images/livres/'~i~'.jpg')}}" class="img-fluid rounded-start" alt="..." style="height:200px;">-
+              </div>
+              <div class="col-md-8">
+                 <div class="card-body">
+                    <h5 class="card-title">Nom Livre</h5>
+                     Auteur</br>
+                    Categorie </br>
+                    <span style="color:black; font-size:20px;">5 Points</span></br>
+                  </div>
+                  <div class="bouton" style="position:fixe;">
+                    <div class="row">
+                    
+                        <div class="col-5">
+                          <a href="#"><button type="button" class="btn btn-primary btn-sm " style="width:150px;">Je le veux</button></a>
+                        </div>
+                        <div class="col-1">    </div>
+                        <div class="col-5">
+                          <a href="#"><button type="button" class="btn btn-secondary btn-sm " style="width:150px;">je le possede</button></a>
+                        </div>
+                        <div class="col-1"> </div>
+                    </div>
+                  </div>
+              </div>
+           </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+</div>
+
+{% endblock %}

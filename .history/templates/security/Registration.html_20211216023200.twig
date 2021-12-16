@@ -1,0 +1,75 @@
+{% extends "base.html.twig" %}
+{% form_theme formRegistre 'bootstrap_5_layout.html.twig' %}
+{% block body %}
+
+{% include'bibliotroc/header.twig' %}
+
+<div class="container-fluid" style="width:90%;">
+
+<div class="row">
+<div class="col-sm-3">
+  <h3>Catalogues</h3>
+    <div class="list-group" style="">
+            {% for i in range(1,10) %}
+                <a href="" class="list-group-item">Mathematique</a>
+           {% endfor %}
+    </div>
+  </div>
+  <div class="col-sm-9">
+
+          <div class="container-fluid" style="background:#27DADA ; width:90%;">
+  <div  class="form_div" style="margin-left:1%; ">
+                 <h1 style="text-align:center;">Inscription !!! </h1>
+            
+                {{ form_start(formRegistre) }}
+                 <div class="row"> 
+                  <div class="col-6">
+                   {{form_row(formRegistre.nom, {'label': "Nom ", 'attr': {'placeholder': "votre nom"}})}}
+                  </div>
+                  <div class="col-6">
+                   {{form_row(formRegistre.prenom, {'label': "Prenom", 'attr': {'placeholder': "votre prenom ", 'requered':true}})}}
+                   </div>
+                 </div>
+                 <div class="row"> 
+                  <div class="col-6">
+                    {{form_row(formRegistre.email, {'label': "Email", 'attr': {'placeholder': "votre email", 'name': "_username" }})}}
+                   </div>
+                  <div class="col-6">
+                   {{form_row(formRegistre.password, {'label': "Mot de passe", 'attr': {'name': "_password"}})}}                 
+                   </div>
+                 </div>
+                 <div class="row"> 
+                  <div class="col-6">
+                  {{form_row(formRegistre.civilite, {'label': "Civilite"})}}
+                  </div>
+                  <div class="col-6">
+                   {{form_row(formRegistre.adresse, {'label': "Adresse", 'attr': {'placeholder': "votre adresse"}})}}
+                   </div>
+                 </div>
+                 <div class="row"> 
+                  <div class="col-6">
+                   {{form_row(formRegistre.codePostale, {'label': "Code postale", 'attr': {'placeholder': "votre code postale"}})}}
+                   </div>
+                   <div class="col-6">
+                   {{form_row(formRegistre.ville, {'label': "Ville", 'attr': {'placeholder': "votre ville"}})}}
+                    </div>
+                 </div>
+                 <div class="row"> 
+                  <div class="col-12">
+                   {{form_row(formRegistre.pays, {'label': "Pays"})}}
+                   </div>
+                 </div>
+                    <button type="submit" name="" id="" class="btn btn-primary" style="width:250px; margin-bottom:100px;">Enregistrer</button>
+                   </div>
+                 </div>
+    {{ form_end(formRegistre) }}
+      
+
+  </div>
+</div>
+
+  </div>
+
+</div>
+
+{% endblock %}
