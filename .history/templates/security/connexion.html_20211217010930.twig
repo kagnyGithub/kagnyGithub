@@ -1,19 +1,10 @@
-{% extends "base.hmtl.twig" %}
+{% extends "base.html.twig" %}
 {% block body %}
      {% include'bibliotroc/header.twig' %}
 
      <div class="container-fluid" style="width:90%; ">
-<div class="row">
-<div class="col-sm-3">
-  <h3>Catalogues</h3>
-    <div class="list-group" style="">
-            {% for i in range(1,10) %}
-                <a href="" class="list-group-item">Mathematique</a>
-           {% endfor %}
-    </div>
-  </div>
-  <div class="col-sm-9">
-             <div class="limiter">
+
+    <div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
