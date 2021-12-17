@@ -50,7 +50,7 @@ class SecurityController extends AbstractController
             $user->setPassword($hash);
             $manager->persist($user);
             $manager->flush();
-             return $this->redirectToRoute('security_login');
+             return $this->redirectToRoute('security_registration');
         }
         return $this->render('security/Registration.html.twig',[
             'formRegistre' => $form->createView(),
@@ -109,7 +109,6 @@ class SecurityController extends AbstractController
     */
    public function sendMail(MailerInterface $mailer ,Request $request)
    {
-    
     $email=$request->request->get('email');
     $contenu=$request->request->get('message');
     $user1 = $this->getUser();

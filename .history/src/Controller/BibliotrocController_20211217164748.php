@@ -96,7 +96,9 @@ class BibliotrocController extends AbstractController
                       ->setLivre($livre);
               $manager->persist($stocker);
               $manager->flush();
-              return $this->redirectToRoute('espace_membre');
+              return $this->redirectToRoute('espace_membre', [
+                'source' => 1
+            ]);
           }
           
       }
@@ -145,9 +147,7 @@ class BibliotrocController extends AbstractController
                         'membrePosseder'=>$membrePosseder
                     ]);
                 }else{
-                    return $this->redirectToRoute('espace_membre', [
-                        'point' => "non"
-                    ]);
+                    return $this->redirectToRoute('show_livre');
                 }
                     
         }

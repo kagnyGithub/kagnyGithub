@@ -12,8 +12,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Repository\CategoriesRepository;
 use App\Repository\UsersRepository;
-use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
 
 class SecurityController extends AbstractController
 {
@@ -50,7 +48,7 @@ class SecurityController extends AbstractController
             $user->setPassword($hash);
             $manager->persist($user);
             $manager->flush();
-             return $this->redirectToRoute('security_login');
+             return $this->redirectToRoute('security_registration');
         }
         return $this->render('security/Registration.html.twig',[
             'formRegistre' => $form->createView(),
@@ -105,22 +103,10 @@ class SecurityController extends AbstractController
     }
 
     /**
-    * @Route("/sendMail", name="sendMail")
-    */
-   public function sendMail(MailerInterface $mailer ,Request $request)
-   {
-    
-    $email=$request->request->get('email');
-    $contenu=$request->request->get('message');
-    $user1 = $this->getUser();
-      $mail = (new Email())
-         ->from($user1->getEmail())
-         ->to($email)
-         ->subject('Mon beau sujet')
-         ->html($contenu)
-      ;
-      $mailer->send($mail);
-
-   }
+     * @Route("/sendMail", name="sendmail")
+     */
+    public function sendMail(){
+        
+    }
 
 }

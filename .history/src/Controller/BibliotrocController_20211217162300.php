@@ -43,7 +43,7 @@ class BibliotrocController extends AbstractController
      /**
       * @Route("show/{id}", name="show_livre")
       */
-      public function showLivre(Livres $livre, LivresRepository $repo, CategoriesRepository $repoCategorie,$info=0){
+      public function showLivre(Livres $livre, LivresRepository $repo, CategoriesRepository $repoCategorie,$info=null){
         $categorie= $livre->getCategorie();
         $categories=$repoCategorie->findAll();
         $Livres=$repo->findBy(['categorie'=> $categorie]);
@@ -96,7 +96,7 @@ class BibliotrocController extends AbstractController
                       ->setLivre($livre);
               $manager->persist($stocker);
               $manager->flush();
-              return $this->redirectToRoute('espace_membre');
+              return $this->redirectToRoute('show_stock');
           }
           
       }
@@ -145,9 +145,7 @@ class BibliotrocController extends AbstractController
                         'membrePosseder'=>$membrePosseder
                     ]);
                 }else{
-                    return $this->redirectToRoute('espace_membre', [
-                        'point' => "non"
-                    ]);
+
                 }
                     
         }

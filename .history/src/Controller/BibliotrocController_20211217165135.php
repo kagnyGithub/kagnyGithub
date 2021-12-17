@@ -145,9 +145,7 @@ class BibliotrocController extends AbstractController
                         'membrePosseder'=>$membrePosseder
                     ]);
                 }else{
-                    return $this->redirectToRoute('espace_membre', [
-                        'point' => "non"
-                    ]);
+                    return $this->redirectToRoute('show_livre');
                 }
                     
         }

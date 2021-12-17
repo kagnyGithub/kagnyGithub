@@ -8,15 +8,12 @@
 <div class="col-sm-3" style="background:#BCF7F7;">
   <h3>Catalogues</h3>
   <div class="list-group" style="">
-    {% for categorie in categories %}
-                <a href="{{ path('page_livre', {'id':categorie.id})}}" class="list-group-item">{{categorie.nomCategorie}}</a>
-           {% endfor %}
+    {% for i in range(0, 6) %}
+       <a href="#" class="list-group-item">Mathematiques</a>
+    {% endfor %}
   </div>
   </div>
 <div class="col-sm-9">
- {% if source is defined %}
-   Salut
-{% endif %}
     <div class="row">
         <div class="col-3">
              <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
@@ -44,21 +41,16 @@
         </div>
         <div class="col-3">
              <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                <div class="card-header" style="text-align:center;font-size:40px;">Points</div>
-                <div class="card-body" style="font-size:30px;text-align:center;height:124px;margin-top:20px;">
-                        {{points}}
+                <div class="card-header" style="text-align:center;font-size:30px;"></div>
+                <div class="card-body" style="font-size:30px;text-align:center;height:190px;margin-top:20px;">
+                        Mes Point
                  </div>
              </div>
         </div>
          
-         
-          {% if app.request.get('point') %}
-          <div class="bg-info clearfix" style="height:50px; margin-top:60px; margin-bottom:20px;">
-              <h2 style="text-align:center;"> Vous n'avez pas assaie de point pour avoir cet livre </h2>
-              </div>
-          {% endif %} 
-
-         
+         <div class="bg-info clearfix" style="height:50px; margin-top:60px; margin-bottom:20px;">
+          <h2 style="text-align:center;">Mes Coordonnees personnelles </h2>
+         </div>
 
          <div class="container-fluid" style="background:#27DADA ;">
            <div  class="form_div" style="width:90%; margin-left:5%; ">
@@ -106,9 +98,9 @@
                  </div>
     {{ form_end(formRegistre) }}
 
-       </div>
-      </div>
-     </div>
+  </div>
+</div>
+    </div>
     {% include'bibliotroc/footer.twig' %}
 </div>
    

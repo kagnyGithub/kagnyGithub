@@ -12,8 +12,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Repository\CategoriesRepository;
 use App\Repository\UsersRepository;
-use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
 
 class SecurityController extends AbstractController
 {
@@ -38,10 +36,9 @@ class SecurityController extends AbstractController
     /**
      * @Route("/inscription", name= "security_registration")
      */
-    public function registration(CategoriesRepository $repoCategorie, Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
+    public function registration(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
     {
         $user=new Users();
-        $categorie=$repoCategorie->findAll();
         $form=$this->createForm(UsersFormType::class, $user);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
@@ -50,11 +47,10 @@ class SecurityController extends AbstractController
             $user->setPassword($hash);
             $manager->persist($user);
             $manager->flush();
-             return $this->redirectToRoute('security_login');
+             return $this->redirectToRoute('security_registration');
         }
         return $this->render('security/Registration.html.twig',[
-            'formRegistre' => $form->createView(),
-            'categories' => $categorie
+            'formRegistre' => $form->createView()
         ]);
     }
 
@@ -62,7 +58,7 @@ class SecurityController extends AbstractController
     * @Route("/espaceMembre", name="espace_membre")
     */
     public function espaceMembre(CategoriesRepository $repoCategorie, Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder){
-        $user1 = $this->getUser();
+        $user = $this->getUser();
         $categorie=$repoCategorie->findAll();
         $user=new Users();
         $form=$this->createForm(UsersFormType::class, $user);
@@ -78,7 +74,7 @@ class SecurityController extends AbstractController
             'formRegistre' => $form->createView(),
             'categories' => $categorie,
             'user' =>$user,
-            'points'=>$user1->getNbrePoint()
+            'points'=> $user->getNbrePoint()
         ]);
     }
 
@@ -105,22 +101,10 @@ class SecurityController extends AbstractController
     }
 
     /**
-    * @Route("/sendMail", name="sendMail")
-    */
-   public function sendMail(MailerInterface $mailer ,Request $request)
-   {
-    
-    $email=$request->request->get('email');
-    $contenu=$request->request->get('message');
-    $user1 = $this->getUser();
-      $mail = (new Email())
-         ->from($user1->getEmail())
-         ->to($email)
-         ->subject('Mon beau sujet')
-         ->html($contenu)
-      ;
-      $mailer->send($mail);
-
-   }
+     * @Route("/sendMail", name="sendmail")
+     */
+    public function sendMail(){
+        
+    }
 
 }

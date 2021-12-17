@@ -8,15 +8,12 @@
 <div class="col-sm-3" style="background:#BCF7F7;">
   <h3>Catalogues</h3>
   <div class="list-group" style="">
-    {% for categorie in categories %}
-                <a href="{{ path('page_livre', {'id':categorie.id})}}" class="list-group-item">{{categorie.nomCategorie}}</a>
-           {% endfor %}
+    {% for i in range(0, 6) %}
+       <a href="#" class="list-group-item">Mathematiques</a>
+    {% endfor %}
   </div>
   </div>
 <div class="col-sm-9">
- {% if source is defined %}
-   Salut
-{% endif %}
     <div class="row">
         <div class="col-3">
              <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
@@ -44,71 +41,36 @@
         </div>
         <div class="col-3">
              <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                <div class="card-header" style="text-align:center;font-size:40px;">Points</div>
-                <div class="card-body" style="font-size:30px;text-align:center;height:124px;margin-top:20px;">
-                        {{points}}
+                <div class="card-header" style="text-align:center;font-size:30px;"></div>
+                <div class="card-body" style="font-size:30px;text-align:center;">
+                        Mes Point
                  </div>
              </div>
         </div>
          
-         
-          {% if app.request.get('point') %}
-          <div class="bg-info clearfix" style="height:50px; margin-top:60px; margin-bottom:20px;">
-              <h2 style="text-align:center;"> Vous n'avez pas assaie de point pour avoir cet livre </h2>
-              </div>
-          {% endif %} 
-
-         
+         <div class="bg-info clearfix" style="height:50px; margin-top:60px; margin-bottom:20px;">
+          <h2 style="text-align:center;">Mes Coordonnees personnelles </h2>
+         </div>
 
          <div class="container-fluid" style="background:#27DADA ;">
            <div  class="form_div" style="width:90%; margin-left:5%; ">
                  <h1 style="text-align:center;">Modifiez mes coordonnées !!! </h1>
                 {{ form_start(formRegistre) }}
-                 <div class="row"> 
-                  <div class="col-6">
                    {{form_row(formRegistre.nom, {'label': "Nom ", 'attr': {'placeholder': "votre nom"}})}}
-                  </div>
-                  <div class="col-6">
-                   {{form_row(formRegistre.prenom, {'label': "Prenom", 'attr': {'placeholder': "votre prenom ", 'requered':true}})}}
-                   </div>
-                 </div>
-                 <div class="row"> 
-                  <div class="col-6">
+                   {{form_row(formRegistre.prenom, {'label': "Prenom", 'attr': {'placeholder': "votre prenom "}})}}
                     {{form_row(formRegistre.email, {'label': "Email", 'attr': {'placeholder': "votre email", 'name': "_username" }})}}
-                   </div>
-                  <div class="col-6">
-                   {{form_row(formRegistre.password, {'label': "Mot de passe", 'attr': {'name': "_password"}})}}                 
-                   </div>
-                 </div>
-                 <div class="row"> 
-                  <div class="col-6">
-                  {{form_row(formRegistre.civilite, {'label': "Civilite"})}}
-                  </div>
-                  <div class="col-6">
+                   {{form_row(formRegistre.password, {'label': "Mot de passe", 'attr': {'name': "_password"}})}}
+                   {{form_row(formRegistre.civilite, {'label': "Civilite"})}}
                    {{form_row(formRegistre.adresse, {'label': "Adresse", 'attr': {'placeholder': "votre adresse"}})}}
-                   </div>
-                 </div>
-                 <div class="row"> 
-                  <div class="col-6">
                    {{form_row(formRegistre.codePostale, {'label': "Code postale", 'attr': {'placeholder': "votre code postale"}})}}
-                   </div>
-                   <div class="col-6">
                    {{form_row(formRegistre.ville, {'label': "Ville", 'attr': {'placeholder': "votre ville"}})}}
-                    </div>
-                 </div>
-                 <div class="row"> 
-                  <div class="col-12">
                    {{form_row(formRegistre.pays, {'label': "Pays"})}}
-                   </div>
-                 </div>
                     <button type="submit" name="" id="" class="btn btn-primary" style="width:250px; margin-bottom:100px;">Enregistrer</button>
-                   </div>
-                 </div>
-    {{ form_end(formRegistre) }}
+                {{ form_end(formRegistre) }}
 
-       </div>
-      </div>
-     </div>
+  </div>
+</div>
+    </div>
     {% include'bibliotroc/footer.twig' %}
 </div>
    
